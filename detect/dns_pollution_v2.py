@@ -37,9 +37,9 @@ def build_malformed_dns_query(domain_name):
         qname += struct.pack("B", len(label)) + label.encode()
     qname += b"\x00"  # 结束
 
-    # QTYPE = 1(A 记录), QCLASS = 2(CS)
+    # QTYPE = 1(A 记录), QCLASS = 5(Invaild)
     qtype = 1
-    qclass = 2
+    qclass = 5
     question = qname + struct.pack(">HH", qtype, qclass)
     payload = header + question
     hexdump(payload)
